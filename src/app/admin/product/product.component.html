@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="container">
+
+  <h2>Products</h2>
+
+  <a class="btn btn-primary" routerLink="/admin/add-product" style="float: right;">Add Product</a>
+  <p>Add, Delete, Update, Update status of products:</p>
+  <div class="col-sm-2">
+    <label for="sel1" class="form-label">Status:</label>
+    <select class="form-control" id="sel1" name="sellist1" (change)="chngst($event)">
+      <option disabled selected>Select</option>
+      <option value="1">Active</option>
+      <option value="2">In-active</option>
+
+    </select>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Sl. No.</th>
+        <th>Category</th>
+        <th>Product</th>
+        <th>SKU</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <td><input type="checkbox" (click)="chkval($event)" value="{{ product.id }}" #n></td>
+        <td>{{ i + 1 }}</td>
+        <td>{{ product.cat_name }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.sku }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <span *ngIf="product.status == 1" class="badge badge-success"
+            >Active</span
+          >
+          <span *ngIf="product.status != 1" class="badge badge-danger"
+            >Inactive</span
+          >
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary" routerLink="/admin/edit-product/{{ product.id }}">Edit</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>

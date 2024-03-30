@@ -1,0 +1,92 @@
+<app-header></app-header>
+
+<div class="container">
+  <h2>Add Category</h2>
+  <br />
+  <form [formGroup]="addProduct" (ngSubmit)="submit()">
+
+    <div class="form-group">
+      <label for="email">Category:</label>
+      <select class="form-control" id="sel1" formControlName="category">
+        <option disabled [selected]="1">Select</option>
+        <option value="{{category.id}}" *ngFor="let category of categories">{{category.name}}</option>
+        <!-- <option value="2">In-active</option> -->
+
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label for="email">Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter product name"
+        id="email"
+        formControlName="name"
+      />
+      <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+        <div *ngIf="f.name.errors.required">Name is required.</div>
+        <div *ngIf="f.name.errors.minlength">Name should be 3 character.</div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Price:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter price"
+        id="email"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Colour:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter colour"
+        id="email"
+        formControlName="color"
+      />
+    </div>
+
+
+    <div class="form-group">
+      <label for="pwd">Sku:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter SKU"
+        id="pwd"
+        formControlName="sku"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Image:</label>
+      <input
+        type="file"
+        class="form-control"
+        placeholder="Enter colour"
+        id="email"
+        formControlName="file"
+        (change)="onFileChange($event)"
+      />
+    </div>
+
+
+    <div class="form-group">
+      <label for="sel1">Select list:</label>
+      <select class="form-control" id="sel1" [disabled]="1">
+        <option>Active</option>
+
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary"[disabled]="addProduct.invalid">Submit</button>
+  </form>
+</div>
+<br />
+<app-footer></app-footer>

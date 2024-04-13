@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
@@ -10,6 +10,9 @@ import { OrderComponent } from './order/order.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { CartComponent } from './cart/cart.component';
+
+// Import library module
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import { CartComponent } from './cart/cart.component';
   imports: [
     CommonModule,
     UserRoutingModule,
-    FormsModule
-  ]
+    FormsModule,
+    NgxSpinnerModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class UserModule { }

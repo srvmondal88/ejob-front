@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../services/userservice.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-cart',
@@ -15,11 +16,15 @@ export class CartComponent implements OnInit{
   carts:any=[];
   tot:any;
   ngOnInit(): void {
-
+    this.spinner.show();
        this.getCarts();
+       setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.spinner.hide();
+      }, 5000);
   }
 
-  constructor(private userservice:UserserviceService,private router:Router){}
+  constructor(private userservice:UserserviceService,private router:Router,private spinner: NgxSpinnerService){}
 
   getCarts()
   {

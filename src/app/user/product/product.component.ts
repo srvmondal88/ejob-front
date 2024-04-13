@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../services/userservice.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,12 @@ export class ProductComponent implements OnInit{
   products:any=[];
   categories:any=[];
   qtyclass:boolean=false;
+
+  constructor(private userService:UserserviceService,private router:Router,private spinner: NgxSpinnerService){}
+
     ngOnInit(): void {
+
+      this.spinner.show();
 
       this.getCategories();
 
@@ -22,9 +28,13 @@ export class ProductComponent implements OnInit{
       };
 
       this.getProducts(data);
+
+      setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
     }
 
-    constructor(private userService:UserserviceService,private router:Router){}
 
     getProducts(data:any)
     {

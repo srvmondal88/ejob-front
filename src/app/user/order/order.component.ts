@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../services/userservice.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-order',
@@ -9,11 +10,17 @@ import { UserserviceService } from '../services/userservice.service';
 export class OrderComponent implements OnInit{
 
   carts:any=[];
-  constructor(private userService:UserserviceService){}
+  constructor(private userService:UserserviceService,private spinner: NgxSpinnerService){}
 
   ngOnInit(): void {
+    this.spinner.show();
 
     this.getAllOrders();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
   }
 
   getAllOrders()

@@ -86,6 +86,16 @@ export class UserserviceService {
      )
   }
 
+  logout():Observable<any>
+  {
+     return this.httpClient.get(`${this.apiURL}logout`,this.httpOptions)
+     .pipe(
+      catchError(this.errorHandler)
+     )
+
+  }
+
+
 
 
   errorHandler(error) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../services/userservice.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -89,10 +90,17 @@ export class CartComponent implements OnInit{
 
   storeOrder(){
 
+
+
     this.userservice.storeOrder(this.ocart).subscribe({
        next:(res)=>{
            if(res.status == 1 && res.result == 1)
             {
+              Swal.fire({
+                title: "Great!",
+                text: "You successfuly purchased the products!",
+                icon: "success"
+              });
                this.router.navigateByUrl('/user/orders');
             }
        },

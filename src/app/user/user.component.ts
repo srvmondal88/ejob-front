@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -6,9 +6,17 @@ import { LoginService } from './services/login.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent {
-
+export class UserComponent implements OnInit{
+ login:any;
+ lerror:any='';
   constructor(private userService: LoginService) { }
+
+  ngOnInit(): void {
+     this.login={
+      email:"",
+      password:""
+     }
+  }
   onSubmit(loginform) {
     this.userService.login(loginform.value).subscribe({
       next: (res: any) => {
@@ -17,6 +25,8 @@ export class UserComponent {
         if (res.isLogged) {
           sessionStorage.setItem('userdetails', JSON.stringify(res.result));
           window.location.href = "http://localhost:4200/user/dashboard";
+        }else{
+           this.lerror="Unauthorized";
         }
 
       },

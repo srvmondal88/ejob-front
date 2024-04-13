@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<!-- ---------------------- cart table ---------------------------------------->
+
+<div>
+  <br />
+  <span
+    ><h2><strong style="margin-left: 500px">Orders</strong></h2></span
+  >
+
+  <br />
+  <table class="table" style="width: 70%; margin-left: 150px">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Qty.</th>
+        <th scope="col">Created on</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cart of carts; let i = index">
+        <th scope="row">
+          {{ i + 1 }}
+        </th>
+        <td>{{ cart.product }}</td>
+        <td>Rs. {{ cart.price }}</td>
+        <td>{{ cart.qty }}</td>
+        <td>{{ cart.created }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+<app-footer></app-footer>

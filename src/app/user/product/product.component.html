@@ -1,0 +1,82 @@
+<app-header></app-header>
+<span
+  ><h2>Category <strong style="margin-left: 500px">Products</strong></h2></span
+>
+
+<!-- modal -->
+<div class="col-sm-6 calrt">
+  <div>
+    <!-- <strong>Success!</strong> Product <a href="#" class="alert-link">added to cart</a>. -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Product Successfuly added to cart ....
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div style="width: 15%" class="float-child">
+    <div class="dropdown show">
+      <a
+        class="btn btn-secondary dropdown-toggle"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Select Category
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" style="cursor: pointer;" *ngFor="let category of categories" (click)="getid(category.id)">{{category.name}}</a>
+
+      </div>
+    </div>
+  </div>
+  <table class="table" style="width: 70%; margin-left: 150px">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Category</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Qty.</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{product.cat_name}}</td>
+        <td>{{product.name}}</td>
+        <td>Rs. {{product.price}}</td>
+        <td width="100px;"><input type="number" [ngClass]="{'error':qtyclass}" min="1" max="5" class="form-control" #no required></td>
+        <td><button type="button" class="btn btn-primary" (click)="addcart(product.id,no.value,product.price)" data-toggle="modal" data-target="#myModal">Add to cart</button></td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>

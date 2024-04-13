@@ -1,0 +1,17 @@
+.float-child {
+  width: 50%;
+  float: left;
+  padding: 20px;
+
+}
+.error
+{
+ border:1px solid red;
+}
+
+.calrt{
+
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}

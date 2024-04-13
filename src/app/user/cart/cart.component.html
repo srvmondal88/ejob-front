@@ -1,0 +1,105 @@
+<app-header></app-header>
+
+<!-- ---------------------- cart table ---------------------------------------->
+
+<div>
+  <br />
+  <span
+    ><h2><strong style="margin-left: 500px">Cart Items</strong></h2></span
+  >
+  <button
+    class="btn btn-success"
+    style="margin-left: 150px"
+    (click)="buy()"
+    data-toggle="modal"
+    data-target="#myModal"
+    [disabled]="arr.length == 0"
+  >
+    Buy
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Order details</h4>
+          <button type="button" class="btn btn-success" (click)="storeOrder()">
+            Buy
+          </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ocarts of ocart">
+                <td>{{ocarts.product}} ({{ocarts.qty}})</td>
+                <td>{{ocarts.price}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="modal-footer">
+             <strong [ngStyle]="{'margin-right':'130px'}">Total : {{tot}}</strong>
+        </div>
+        <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <table class="table" style="width: 70%; margin-left: 150px">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Qty.</th>
+        <th scope="col">Created on</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cart of carts; let i = index">
+        <th scope="row">
+          <input
+            [disabled]="cart.status == 2"
+            type="checkbox"
+            (click)="buyp($event)"
+            value="{{ cart.id }}"
+          />{{ i + 1 }}
+        </th>
+        <td>{{ cart.product }}</td>
+        <td>Rs. {{ cart.price }}</td>
+        <td>{{ cart.qty }}</td>
+        <td>{{ cart.created }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="delete(cart.id)"
+
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+<app-footer></app-footer>

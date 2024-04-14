@@ -9,6 +9,7 @@ import { ProductComponent } from './product/product.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'products',component: ProductComponent, canActivate:[adminauthGuard] },
   { path: 'add-category',component: AddcategoryComponent, canActivate:[adminauthGuard] },
   { path : 'add-product', component: AddproductComponent, canActivate:[adminauthGuard] },
-  { path : 'edit-product/:id', component: EditproductComponent, canActivate:[adminauthGuard] }
+  { path : 'edit-product/:id', component: EditproductComponent, canActivate:[adminauthGuard] },
+  { path : 'users', component: UsersComponent, canActivate:[adminauthGuard] }
 ];
 
 @NgModule({

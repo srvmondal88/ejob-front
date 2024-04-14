@@ -14,6 +14,7 @@ import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ProductComponent,
     AddcategoryComponent,
     AddproductComponent,
-    EditproductComponent
+    EditproductComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,

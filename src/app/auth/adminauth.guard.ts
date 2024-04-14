@@ -1,5 +1,5 @@
-import { CanActivateFn } from '@angular/router';
-import { Router } from '@angular/router';
+import { CanActivateFn,Router } from '@angular/router';
+import {inject} from "@angular/core";
 
 export const adminauthGuard: CanActivateFn = (route, state) => {
 
@@ -9,6 +9,7 @@ export const adminauthGuard: CanActivateFn = (route, state) => {
   {
   return true;
   }else{
-    return false;
+    // return false;
+    return inject(Router).createUrlTree(['/admin/admin-login']);
   }
 };

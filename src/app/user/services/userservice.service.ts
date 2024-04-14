@@ -22,6 +22,15 @@ export class UserserviceService {
 
   constructor(private httpClient: HttpClient) { }
 
+   isLoggedIn(): boolean {
+    const user = this.api_key;
+    if (user == '') {
+      return false;
+    } else {
+      return user;
+    }
+  }
+
   getProducts(data:any):Observable<any>
   {
      return this.httpClient.post(`${this.apiURL}get_all_products`,data,this.httpOptions)

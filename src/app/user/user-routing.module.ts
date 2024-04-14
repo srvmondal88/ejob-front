@@ -5,13 +5,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductComponent } from './product/product.component';
 import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
+import { userauthGuard } from '../auth/userauth.guard';
 
 const routes: Routes = [
   { path: '', component: UserComponent },
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'products', component: ProductComponent},
-  { path: 'orders', component: OrderComponent},
-  { path: 'cart', component: CartComponent}
+  { path: 'dashboard', component: DashboardComponent,canActivate: [userauthGuard]},
+  { path: 'products', component: ProductComponent,canActivate: [userauthGuard]},
+  { path: 'orders', component: OrderComponent,canActivate: [userauthGuard]},
+  { path: 'cart', component: CartComponent,canActivate: [userauthGuard]}
 
 ];
 

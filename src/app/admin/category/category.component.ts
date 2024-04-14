@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-category',
@@ -10,12 +11,13 @@ export class CategoryComponent implements OnInit {
 
   category: any = [];
 
-  constructor(private adminservice: AdminService) { }
+  constructor(private adminservice: AdminService,private spinner: NgxSpinnerService) { }
   ngOnInit(): void {
      this.getAllcategories();
   }
 
   getAllcategories() {
+    this.spinner.show();
     this.adminservice.getAllcategroies().subscribe({
 
       next: (res: any) => {
@@ -27,6 +29,10 @@ export class CategoryComponent implements OnInit {
         console.log(error);
       },
     })
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
   }
 
   chngst(id:any,st:any)

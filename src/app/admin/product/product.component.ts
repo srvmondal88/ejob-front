@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-product',
@@ -11,13 +12,16 @@ export class ProductComponent implements OnInit {
   products: any = [];
   selid: any = [];
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+
     this.getAllProducts();
   }
 
   getAllProducts() {
+
+    this.spinner.show();
     this.adminService.getProducts().subscribe({
       next: (res: any) => {
         this.products = res.result;
@@ -28,6 +32,11 @@ export class ProductComponent implements OnInit {
         console.log(error);
       },
     })
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
   }
 
   chkval(n: any) {

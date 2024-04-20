@@ -1,1 +1,41 @@
-<p>users works!</p>
+<app-header></app-header>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<div class="container">
+
+  <h2>Users</h2>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+
+        <th>Sl. No.</th>
+        <th>Name</th>
+        <th>Email</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users| paginate: { itemsPerPage: count, currentPage: p }; let i = index">
+
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+  <!--Including the pagination control.-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+<app-footer></app-footer>

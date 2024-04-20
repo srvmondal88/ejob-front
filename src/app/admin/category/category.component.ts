@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -10,6 +11,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class CategoryComponent implements OnInit {
 
   category: any = [];
+  p: any = 1;
+  count: any = 5;
 
   constructor(private adminservice: AdminService,private spinner: NgxSpinnerService) { }
   ngOnInit(): void {

@@ -95,6 +95,14 @@ export class AdminService {
      )
   }
 
+  getAllUsers():Observable<any>
+  {
+     return this.http.get(`${this.apiURL}/get_all_users`,this.httpOptions)
+     .pipe(
+      catchError(this.errorHandler)
+     )
+  }
+
   errorHandler(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

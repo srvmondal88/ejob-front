@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     CommonModule,
     UserRoutingModule,
     FormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxPaginationModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

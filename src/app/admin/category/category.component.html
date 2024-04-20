@@ -23,7 +23,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let categories of category; let i = index">
+      <tr *ngFor="let categories of category| paginate: { itemsPerPage: count, currentPage: p }; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ categories.name }}</td>
         <td>{{ categories.sku }}</td>
@@ -43,5 +43,9 @@
       </tr>
     </tbody>
   </table>
+    <!--Including the pagination control.-->
+    <div class="text-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
 </div>
 <app-footer></app-footer>

@@ -10,6 +10,9 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class OrderComponent implements OnInit{
 
   carts:any=[];
+  p: any = 1;
+  count: any = 5;
+
   constructor(private userService:UserserviceService,private spinner: NgxSpinnerService){}
 
   ngOnInit(): void {

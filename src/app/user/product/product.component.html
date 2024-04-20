@@ -74,7 +74,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products;let i=index">
+      <tr *ngFor="let product of products| paginate: { itemsPerPage: count, currentPage: p };let i=index">
         <th scope="row">{{i+1}}</th>
         <td>{{product.cat_name}}</td>
         <td>{{product.name}}</td>
@@ -86,5 +86,9 @@
 
     </tbody>
   </table>
+    <!--Including the pagination control.-->
+    <div class="text-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
 </div>
 <app-footer></app-footer>

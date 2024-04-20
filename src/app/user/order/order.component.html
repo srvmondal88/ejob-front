@@ -29,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cart of carts; let i = index">
+      <tr *ngFor="let cart of carts | paginate: { itemsPerPage: count, currentPage: p }; let i = index">
         <th scope="row">
           {{ i + 1 }}
         </th>
@@ -41,6 +41,10 @@
       </tr>
     </tbody>
   </table>
+   <!--Including the pagination control.-->
+   <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 <app-footer></app-footer>

@@ -15,6 +15,7 @@ import { AddproductComponent } from './addproduct/addproduct.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { UsersComponent } from './users/users.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { UsersComponent } from './users/users.component';
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxPaginationModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editproduct',
@@ -14,7 +15,7 @@ export class EditproductComponent implements OnInit {
   product: any;
   categories: any = [];
 
-  constructor(private fb: FormBuilder, private actroute: ActivatedRoute, private adminService: AdminService) { }
+  constructor(private fb: FormBuilder, private actroute: ActivatedRoute, private adminService: AdminService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -42,7 +43,7 @@ export class EditproductComponent implements OnInit {
     return this.adminService.getproductById(id).subscribe({
       next: (res: any) => {
         console.log(res);
-        this.product = res.result[0];
+        this.product = res.result;
       },
       error: (error) => {
         console.log(error);
@@ -54,10 +55,14 @@ export class EditproductComponent implements OnInit {
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
       this.addProduct.patchValue({
-        image: file
+        image: reader.result
       });
     }
+  }
   }
 
   // ---------- get categories ----------------------
@@ -75,5 +80,24 @@ export class EditproductComponent implements OnInit {
 
   submit() {
     console.log(this.addProduct.value);
+
+    let id = this.actroute.snapshot.params['id'];
+
+    this.adminService.editProduct(id,this.addProduct.value).subscribe({
+      next:(res:any)=>{
+          if(res.status == 1 && res.result == 'Sucessfuly updated')
+            {
+              Swal.fire({
+                title: "Great!",
+                text: "You successfuly purchased the products!",
+                icon: "success"
+              });
+                this.router.navigateByUrl('/admin/products');
+            }
+      },
+      error:(error)=>{
+         console.log(error);
+      }
+    })
   }
 }

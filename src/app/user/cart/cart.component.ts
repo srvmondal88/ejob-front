@@ -41,6 +41,10 @@ export class CartComponent implements OnInit{
 
   delete(id:any)
   {
+
+    if(confirm("Are you sure to delete "+name)) {
+      console.log("Implement delete functionality here");
+
      console.log(id);
 
      this.userservice.deletCart(id).subscribe({
@@ -54,6 +58,7 @@ export class CartComponent implements OnInit{
           console.log(error)
        }
      })
+    }
   }
 
   buyp(n:any)

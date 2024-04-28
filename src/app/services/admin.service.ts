@@ -103,6 +103,14 @@ export class AdminService {
      )
   }
 
+  editProduct(p:any,data:any):Observable<any>
+  {
+     return this.http.put(`${this.apiURL}/update_prod/${p}`,data,this.httpOptions)
+     .pipe(
+      catchError(this.errorHandler)
+     )
+  }
+
   errorHandler(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

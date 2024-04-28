@@ -14,6 +14,7 @@ export class ProductComponent implements OnInit {
   p: any = 1;
   count: any = 5;
 
+
   constructor(private adminService: AdminService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {

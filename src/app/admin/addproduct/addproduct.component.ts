@@ -8,61 +8,65 @@ import { AdminService } from 'src/app/services/admin.service';
   templateUrl: './addproduct.component.html',
   styleUrls: ['./addproduct.component.css']
 })
-export class AddproductComponent implements OnInit{
+export class AddproductComponent implements OnInit {
 
   addProduct: any;
-  categories:any = [];
+  categories: any = [];
 
-  constructor(private fb: FormBuilder,private adminService: AdminService,private router: Router) { }
+  constructor(private fb: FormBuilder, private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
 
-     this.addProduct = this.fb.group({
+    this.addProduct = this.fb.group({
 
-      category: ['',[Validators.required]],
-      name: ['',[Validators.required]],
-      sku :['',[Validators.required]],
-      price: ['',[Validators.required]],
-      color :['',[Validators.required]],
-      file : ['',[Validators.required]],
-      image : ['',[Validators.required]]
-     })
+      category: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      sku: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      color: ['', [Validators.required]],
+      file: ['', [Validators.required]],
+      image: ['', [Validators.required]]
+    })
 
-     this.getAllCategory();
+    this.getAllCategory();
   }
 
-  get f(){
+  get f() {
     return this.addProduct.controls;
   }
 
   onFileChange(event) {
-     console.log(event.target.files[0]);
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
+
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      console.log(reader.result);
       this.addProduct.patchValue({
-        image: file
+        image: reader.result
       });
-    }
+    };
+
+
   }
 
   // ---------- get categories ----------------------
-  getAllCategory()
-  {
-     this.adminService.getAllcategroies().subscribe({
-      next:(res:any) =>{
+  getAllCategory() {
+    this.adminService.getAllcategroies().subscribe({
+      next: (res: any) => {
         this.categories = res.result;
         console.log(res);
       },
       error: (error) => {
-         console.log(error);
+        console.log(error);
       }
-     })
+    })
   }
 
-  submit(){
-     console.log(this.addProduct.value);
+  submit() {
+    console.log(this.addProduct.value);
 
-     this.adminService.addProduct(this.addProduct.value).subscribe({
+    this.adminService.addProduct(this.addProduct.value).subscribe({
       next: (res: any) => {
 
         console.log(res);
@@ -72,7 +76,7 @@ export class AddproductComponent implements OnInit{
       error: (error) => {
         console.log(error);
       },
-     })
+    })
   }
 
 

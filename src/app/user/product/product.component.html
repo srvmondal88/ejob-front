@@ -69,6 +69,7 @@
         <th scope="col">Category</th>
         <th scope="col">Product</th>
         <th scope="col">Price</th>
+        <th scope="col">Image</th>
         <th scope="col">Qty.</th>
         <th scope="col">Action</th>
       </tr>
@@ -79,6 +80,7 @@
         <td>{{product.cat_name}}</td>
         <td>{{product.name}}</td>
         <td>Rs. {{product.price}}</td>
+        <td><img [src]="product.image" width="140px" height="100px"></td>
         <td width="100px;"><input type="number" [ngClass]="{'error':qtyclass}" min="1" max="5" class="form-control" #no required></td>
         <td><button type="button" class="btn btn-primary" (click)="addcart(product.id,no.value,product.price)" data-toggle="modal" data-target="#myModal">Add to cart</button></td>
       </tr>

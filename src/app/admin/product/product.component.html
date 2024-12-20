@@ -17,7 +17,7 @@
   <p>Add, Delete, Update, Update status of products:</p>
   <div class="col-sm-2">
     <label for="sel1" class="form-label">Status:</label>
-    <select class="form-control" id="sel1" name="sellist1" (change)="chngst($event)">
+    <select class="form-control" id="sel1" [disabled]="ifStatus" name="sellist1" (change)="chngst($event)">
       <option disabled selected>Select</option>
       <option value="1">Active</option>
       <option value="2">In-active</option>
@@ -27,7 +27,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th></th>
+        <th><input type="checkbox" (change)="toggleSelectAll()" id="sleAll"></th>
         <th>Sl. No.</th>
         <th>Category</th>
         <th>Product</th>
@@ -40,7 +40,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let product of products| paginate: { itemsPerPage: count, currentPage: p }; let i = index">
-        <td><input type="checkbox" (click)="chkval($event)" value="{{ product.id }}" #n></td>
+        <td><input type="checkbox" class="trigger-click" (click)="chkval($event)" [checked]="product.selected" value="{{ product.id }}" #n></td>
         <td>{{ i + 1 }}</td>
         <td>{{ product.cat_name }}</td>
         <td>{{ product.name }}</td>

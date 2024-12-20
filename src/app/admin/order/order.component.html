@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<div class="container">
+
+  <h2>Orders</h2>
+
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+
+        <th>Sl. No.</th>
+        <th>Cart Id.</th>
+        <th>User</th>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let orders of order| paginate: { itemsPerPage: count, currentPage: p }; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ orders.cart_id }}</td>
+        <td>{{ orders.name}}</td>
+        <td>{{ orders.product}}</td>
+        <td>{{ orders.qty}}</td>
+        <td>{{ orders.tot_price}}</td>
+        <td>
+          <span *ngIf="orders.status == 1" class="badge badge-success"
+            >Paid</span
+          >
+          <span *ngIf="orders.status != 1" class="badge badge-danger"
+            >Not Paid</span
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!--Including the pagination control.-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+<app-footer></app-footer>

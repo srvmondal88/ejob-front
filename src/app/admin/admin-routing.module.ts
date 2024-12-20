@@ -10,6 +10,8 @@ import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
 import { UsersComponent } from './users/users.component';
+import { OrderComponent } from './order/order.component';
+import { AddservicesComponent } from './addservices/addservices.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'add-category',component: AddcategoryComponent, canActivate:[adminauthGuard] },
   { path : 'add-product', component: AddproductComponent, canActivate:[adminauthGuard] },
   { path : 'edit-product/:id', component: EditproductComponent, canActivate:[adminauthGuard] },
-  { path : 'users', component: UsersComponent, canActivate:[adminauthGuard] }
+  { path : 'users', component: UsersComponent, canActivate:[adminauthGuard] },
+  { path : 'orders', component: OrderComponent, canActivate:[adminauthGuard] },
+  { path : 'add-services', component: AddservicesComponent, canActivate:[adminauthGuard] }
 ];
 
 @NgModule({

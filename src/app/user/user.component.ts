@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './services/login.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-user',
@@ -9,7 +10,8 @@ import { LoginService } from './services/login.service';
 export class UserComponent implements OnInit{
  login:any;
  lerror:any='';
-  constructor(private userService: LoginService) { }
+ passWrd:any='password';
+  constructor(private userService: LoginService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
      this.login={
@@ -18,6 +20,8 @@ export class UserComponent implements OnInit{
      }
   }
   onSubmit(loginform) {
+    this.spinner.show();
+
     this.userService.login(loginform.value).subscribe({
       next: (res: any) => {
         console.log(res.result);
@@ -35,5 +39,16 @@ export class UserComponent implements OnInit{
       }
     })
     console.log(loginform.value);
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
+  }
+
+  showPass(n:any)
+  {
+    let pass = n.checked;
+    this.passWrd = pass?'text':'password';
+    console.log(this.passWrd);
   }
 }

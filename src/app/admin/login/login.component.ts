@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   login:FormGroup;
-  constructor(private adminService: AdminService,private router: Router) { }
+  constructor(private adminService: AdminService,private router: Router, private spinner: NgxSpinnerService) { }
 
    ngOnInit(): void {
 
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
   submit()
   {
     // console.log(this.login.value);
+    this.spinner.show();
     this.adminService.login(this.login.value).subscribe((res)=>{
         // console.log(res.status);
         if(res.status == 1 && res.isLogged == true)

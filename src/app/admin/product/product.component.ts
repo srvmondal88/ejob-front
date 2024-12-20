@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -13,9 +13,11 @@ export class ProductComponent implements OnInit {
   selid: any = [];
   p: any = 1;
   count: any = 5;
+  ifStatus: boolean = true;
+  selectAll: boolean = true;
 
-
-  constructor(private adminService: AdminService,private spinner: NgxSpinnerService) { }
+  @ViewChild('selectAllCheckbox', { static: false }) selectAllCheckbox: ElementRef;
+  constructor(private adminService: AdminService, private spinner: NgxSpinnerService,private renderer: Renderer2) { }
 
   ngOnInit(): void {
 
@@ -53,6 +55,11 @@ export class ProductComponent implements OnInit {
       this.selid.splice(index, 1);
 
     }
+    if (this.selid.length > 0) {
+      this.ifStatus = false;
+    } else {
+      this.ifStatus = true;
+    }
     console.log(this.selid);
   }
 
@@ -66,16 +73,30 @@ export class ProductComponent implements OnInit {
       next: (res) => {
         console.log(res)
 
-        if(res.status == 1)
-        {
+        if (res.status == 1) {
           this.getAllProducts();
           this.selid = [];
+          (document.querySelector('#sleAll') as HTMLInputElement).checked = false;
         }
       },
       error: (error) => {
         console.log(error);
       }
     })
+  }
+
+  toggleSelectAll() {
+    // this.products.forEach(item => item.selected = this.selectAll);
+    // this.ifStatus = !this.selectAll;
+    // this.selectAll = !this.selectAll;
+
+    const elements = document.querySelectorAll('.trigger-click');
+
+    // Loop through all elements and trigger the click event
+    elements.forEach((element: HTMLElement) => {
+      element.click(); // Trigger the click event on each element
+    });
+
   }
 
 }

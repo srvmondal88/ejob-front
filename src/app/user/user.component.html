@@ -8,7 +8,7 @@
 </head>
 <body>
 
-
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
 <h2>Login Form</h2>
 <div class="col-sm-6">
 
@@ -29,7 +29,10 @@
   </div>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required [(ngModel)]="login.password" #password="ngModel">
+    <input [type]="passWrd" class="form-control" placeholder="Enter Password" name="password" required [(ngModel)]="login.password" #password="ngModel">
+    <label>
+      <input type="checkbox" name="shwPass" #sh (click)="showPass(sh)"> Show Password
+    </label>
     <div class="alert alert-danger" *ngIf="!password?.valid && (password?.dirty || password?.touched)">
       <div>Title is required.</div>
   </div>

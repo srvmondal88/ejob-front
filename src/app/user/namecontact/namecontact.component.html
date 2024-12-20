@@ -1,0 +1,19 @@
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-blue w3-round" style="width: 33.33%">Step-1</div>
+</div><br>
+<div class="tab">Name:
+<p><input placeholder="First name..." [(ngModel)]="data.firstname" #fname> <input class="ml-2" placeholder="Last name..." [(ngModel)]="data.lastname" #lname></p>
+<span class="text-danger" id="err_firstname"></span><span class="text-danger" id="err_lastname" style="margin-left:10rem;"></span>
+</div>
+
+<div class="tab">Contact Info:
+<p><input placeholder="E-mail..." #email  [(ngModel)]="data.email" readonly><input class="ml-2" placeholder="Phone..." [(ngModel)]="data.phone" #info></p>
+<span class="text-danger"></span><span class="text-danger" id="err_phone" style="margin-left:25rem;"></span>
+</div>
+
+<div style="overflow:auto;">
+<div style="float:right;">
+  <!-- <button type="button" id="prevBtn" class="btn btn-primary">Previous</button> -->
+  <button type="button" id="nextBtn" class="btn btn-success ml-2" (click)="next1(fname.value,lname.value,email.value,info.value)">Next</button>
+</div>
+</div>

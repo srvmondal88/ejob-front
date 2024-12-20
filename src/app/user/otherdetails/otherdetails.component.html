@@ -1,0 +1,19 @@
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-blue w3-round" style="width: 100%">Step-3</div>
+</div><br>
+<div class="tab">Other details:
+<p><input placeholder="Write something about yourself..." [(ngModel)]="data.other_details"> </p>
+<p></p>
+</div>
+
+<div class="tab">Favourites:
+<p><input placeholder="Favourites..." [(ngModel)]="data.favourites"></p>
+<p></p>
+</div>
+
+<div style="overflow:auto;">
+<div style="float:right;">
+  <button type="button" id="prevBtn" class="btn btn-primary" (click)="prev3()">Previous</button>
+  <button type="button" id="nextBtn" class="btn btn-success ml-2" (click)="submit()">Submit</button>
+</div>
+</div>

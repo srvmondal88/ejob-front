@@ -14,6 +14,11 @@ import { CartComponent } from './cart/cart.component';
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { NamecontactComponent } from './namecontact/namecontact.component';
+import { BirthdateComponent } from './birthdate/birthdate.component';
+import { OtherdetailsComponent } from './otherdetails/otherdetails.component';
+import { WishlistitemsComponent } from './wishlistitems/wishlistitems.component';
 
 
 @NgModule({
@@ -24,7 +29,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     OrderComponent,
     HeaderComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    UserdetailsComponent,
+    NamecontactComponent,
+    BirthdateComponent,
+    OtherdetailsComponent,
+    WishlistitemsComponent
   ],
   imports: [
     CommonModule,

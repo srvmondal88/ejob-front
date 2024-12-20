@@ -111,6 +111,14 @@ export class AdminService {
      )
   }
 
+  getAllOrders():Observable<any>
+  {
+     return this.http.get(`${this.apiURL}/get_all_orders`,this.httpOptions)
+     .pipe(
+      catchError(this.errorHandler)
+     )
+  }
+
   errorHandler(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

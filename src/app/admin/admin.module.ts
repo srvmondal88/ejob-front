@@ -16,6 +16,9 @@ import { EditproductComponent } from './editproduct/editproduct.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { UsersComponent } from './users/users.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { OrderComponent } from './order/order.component';
+import { AddservicesComponent } from './addservices/addservices.component';
+
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddcategoryComponent,
     AddproductComponent,
     EditproductComponent,
-    UsersComponent
+    UsersComponent,
+    OrderComponent,
+    AddservicesComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +43,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,0 +1,19 @@
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-blue w3-round" style="width: 66.66%">Step-2</div>
+</div><br>
+<div class="tab">Birthday:
+<p><input type="date" placeholder="Date..." [(ngModel)]="data.dob" #b> </p>
+<p id="err_birthdate" style="color:red;"></p>
+</div>
+
+<div class="tab">Birthday Quote:
+<p><input placeholder="Quote..." [(ngModel)]="data.birthday_quote" #q></p>
+<p id="err_quote" style="color:red;"></p>
+</div>
+
+<div style="overflow:auto;">
+<div style="float:right;">
+  <button type="button" id="prevBtn" class="btn btn-primary" (click)="prev2()">Previous</button>
+  <button type="button" id="nextBtn" class="btn btn-success ml-2" (click)="next2(b.value,q.value)">Next</button>
+</div>
+</div>

@@ -16,9 +16,21 @@
         <a class="nav-link" routerLink="/user/orders">Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/user/cart">Cart</a>
+        <a class="nav-link" routerLink="/user/cart">Cart<span *ngIf="cart.length > 0" class="badge bg-warning text-dark">{{ cart?.length }}</span></a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user/user-details">User details</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="javascript.void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          More Options
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/user/wishlist-items">Wishlist</a></li>
+          <li><a class="dropdown-item" routerLink="/user/help">Help</a></li>
+          <li><a class="dropdown-item" routerLink="/user/logout">Logout</a></li>
+        </ul>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

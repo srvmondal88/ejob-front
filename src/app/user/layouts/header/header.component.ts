@@ -1,16 +1,20 @@
 import { Router } from '@angular/router';
 import { UserserviceService } from './../../services/userservice.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
+  cart:any=[];
   constructor(private userservice:UserserviceService,private router:Router){}
 
+  ngOnInit(): void {
+    this.getCarts();
+  }
   logout()
   {
      console.log('logout');
@@ -24,6 +28,19 @@ export class HeaderComponent {
       },
       error:(error)=>{
         console.log(error);
+      }
+     })
+  }
+
+  getCarts()
+  {
+     return this.userservice.getCartItems().subscribe({
+      next:(res)=>{
+        this.cart = res.result;
+          console.log(this.cart);
+      },
+      error:(error)=>{
+          console.log(error);
       }
      })
   }

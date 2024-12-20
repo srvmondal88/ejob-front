@@ -1,0 +1,22 @@
+.custom-card {
+  width: 100%;
+  max-width: 200px; /* Reduce the card's max width */
+  margin: 0 auto; /* Center the card */
+}
+
+.custom-card-img {
+  max-height: 120px; /* Limit the image size */
+  object-fit: cover; /* Crop the image to fit the box */
+}
+
+.custom-card-body {
+  padding: 8px; /* Reduce the padding in the body */
+}
+
+.custom-card-title {
+  font-size: 14px; /* Reduce the font size of the title */
+}
+
+.custom-card-text {
+  font-size: 12px; /* Reduce the font size of the price */
+}

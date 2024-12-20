@@ -1,0 +1,16 @@
+<app-header></app-header>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div id="regForm">
+<app-namecontact *ngIf="namecontact" (nameChange)="updateName($event)"></app-namecontact>
+<app-birthdate *ngIf="birthdate" (birthDate)="updateBirth($event)"></app-birthdate>
+<app-otherdetails *ngIf="otherdetails" (otherDetails)="updateOther($event)"></app-otherdetails>
+
+</div>
+<app-footer></app-footer>
